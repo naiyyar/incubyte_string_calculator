@@ -12,10 +12,8 @@ class StringCalculator
       delimiter = delimiter_str[2..]
     end
 
-    if str.include?("\n")
-      str.gsub("\n", delimiter).split(delimiter).map(&:to_i).sum
-    else
-      str.split(delimiter).map(&:to_i).sum
-    end
+    str = str.gsub("\n", delimiter) if str.include?("\n")
+
+    str.split(delimiter).map(&:to_i).sum
   end
 end
