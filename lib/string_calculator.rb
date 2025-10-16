@@ -1,9 +1,9 @@
+class NegativeNumberError < StandardError; end
+
 class StringCalculator
 
   def self.add str = ""
     return 0 if str.empty?
-
-    return str.to_i if str.length == 1
 
     delimiter = ','
 
@@ -18,8 +18,10 @@ class StringCalculator
 
     negative_numbers = number_array.select { |num| num < 0 }
     
-    raise "negative numbers not allowed #{negative_numbers.join(', ')}" unless negative_numbers.empty?
-
+    unless negative_numbers.empty?
+      raise NegativeNumberError, "negative numbers not allowed #{negative_numbers.join(', ')}" 
+    end
+    
     number_array.sum
   end
 end

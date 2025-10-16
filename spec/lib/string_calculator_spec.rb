@@ -32,12 +32,12 @@ describe StringCalculator do
 
     context 'Handling negative numbers' do
       it "raises an exception for a single negative number" do
-        expect { described_class.add("1,-2,3") }.to raise_error("negative numbers not allowed -2")
+        expect { described_class.add("1,-2,3") }.to raise_error(NegativeNumberError, "negative numbers not allowed -2")
       end
     end
 
     it "raises an exception for multiple negative numbers" do
-      expect { described_class.add("1,-2,-3,4") }.to raise_error("negative numbers not allowed -2, -3")
+      expect { described_class.add("1,-2,-3,4") }.to raise_error(NegativeNumberError, "negative numbers not allowed -2, -3")
     end
   end
 end
