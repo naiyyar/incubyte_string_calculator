@@ -8,7 +8,7 @@
 
       git clone https://github.com/naiyyar/incubyte_string_calculator.git
 
-      cd string-calculator
+      cd incubyte_string_calculator
     
 3.  Install dependencies:
   
