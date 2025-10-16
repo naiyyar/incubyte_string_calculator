@@ -11,5 +11,11 @@ describe StringCalculator do
         expect(described_class.add('1')).to eq 1
       end
     end
+
+    context 'When two comma seperated numbers are given' do
+      it 'Should return the sum of numbers' do
+        expect(described_class.add('1,5')).to eq 6
+      end
+    end
   end
 end
