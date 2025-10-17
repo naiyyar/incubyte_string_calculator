@@ -1,15 +1,12 @@
 class StringCalculator
   class NegativeNumberError < StandardError; end
 
+  DEFAULT_DELIMITER = ','
+
   def self.add str = ""
     return 0 if str.empty?
 
-    delimiter = ','
-
-    if str.start_with?('//')
-      delimiter_str, str = str.split("\n")
-      delimiter = delimiter_str[2..]
-    end
+    delimiter, str = split_delimiter_and_numbers(str)
 
     str = str.gsub("\n", delimiter) if str.include?("\n")
 
@@ -21,6 +18,15 @@ class StringCalculator
   end
 
   private
+
+  def self.split_delimiter_and_numbers(str)
+    if str.start_with?('//')
+      delimiter_str, number_str = str.split("\n")
+      [delimiter_str[2..], number_str]
+    else
+      [DEFAULT_DELIMITER, str]
+    end
+  end
 
   def self.check_for_negatives!(numbers)
     negatives = numbers.select(&:negative?)
